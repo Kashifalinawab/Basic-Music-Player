@@ -11,28 +11,43 @@ import { BsMusicPlayer } from "react-icons/bs";
 import "./AudioPlayer.css";
 
 function AudioCarosel(props) {
-  const myAudio = [
-    "./Audio/A1.mp3",
-    "./Audio/A2.mp3",
-    "./Audio/A3.mp3",
-    "./Audio/A4.mp3",
-    "./Audio/A5.mp3",
-    "./Audio/A6.mp3",
-    "./Audio/A7.mp3",
-    "./Audio/A8.mp3",
-    "./Audio/A9.mp3",
-  ];
-  // console.log(myAudio);
-  const myPhotoGal = [
-    "./Images/1.jpg",
-    "./Images/2.jpg",
-    "./Images/3.jpg",
-    "./Images/4.jpg",
-    "./Images/5.jpg",
-    "./Images/6.jpg",
-    "./Images/7.jpg",
-    "./Images/8.jpg",
-    "./Images/9.jpg",
+  const playlist = [
+    {
+      image: "./Images/1.jpg",
+      song: "./Audio/A1.mp3",
+    },
+    {
+      image: "./Images/2.jpg",
+      song: "./Audio/A2.mp3",
+    },
+    {
+      image: "./Images/3.jpg",
+      song: "./Audio/A3.mp3",
+    },
+    {
+      image: "./Images/4.jpg",
+      song: "./Audio/A4.mp3",
+    },
+    {
+      image: "./Images/5.jpg",
+      song: "./Audio/A5.mp3",
+    },
+    {
+      image: "./Images/6.jpg",
+      song: "./Audio/A6.mp3",
+    },
+    {
+      image: "./Images/7.jpg",
+      song: "./Audio/A7.mp3",
+    },
+    {
+      image: "./Images/8.jpg",
+      song: "./Audio/A8.mp3",
+    },
+    {
+      image: "./Images/9.jpg",
+      song: "./Audio/A9.mp3",
+    },
   ];
 
   const refEl = useRef(null);
@@ -50,7 +65,7 @@ function AudioCarosel(props) {
   }, [isPlaying]);
 
   const rightEvent = () => {
-    if (currIndex + 1 === myAudio.length - 1) {
+    if (currIndex + 1 === playlist.length - 1) {
       return setCurrIndex(0);
     }
     setCurrIndex(currIndex + 1);
@@ -59,7 +74,7 @@ function AudioCarosel(props) {
   const leftEvent = () => {
     if (currIndex === 0) {
       console.log(currIndex);
-      return setCurrIndex(myAudio.length - 1);
+      return setCurrIndex(playlist.length - 1);
     }
     setCurrIndex(currIndex - 1);
   };
@@ -67,7 +82,7 @@ function AudioCarosel(props) {
   return (
     <div id="maindiv">
       <div id="Audio">
-        {<audio autoPlay src={myAudio[currIndex]} ref={refEl} />}
+        {<audio autoPlay src={playlist[currIndex].song} ref={refEl} />}
 
         <div id="pic">
           {" "}
@@ -78,7 +93,7 @@ function AudioCarosel(props) {
             </span>
             Fledge Music Player
           </h2>
-          {<img src={myPhotoGal[currIndex]} id="image" alt="music pic" />}
+          {<img src={playlist[currIndex].image} id="image" alt="music pic" />}
         </div>
       </div>
       <div id="btn">
